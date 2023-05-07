@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
-public class SignupActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     TextInputLayout tilEmail, tilPassword;
     EditText editTextEmail, editTextPassword;
     Button btn_signup;
@@ -22,7 +22,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_register);
         tilEmail = findViewById(R.id.textInputLayoutEmail);
         tilPassword = findViewById(R.id.textInputLayoutPassword);
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -61,7 +61,7 @@ public class SignupActivity extends AppCompatActivity {
                     // TODO: FIREBASE SIGNUP
                     // TODO: GOTO LOGIN PAGE
 
-                    Toast.makeText(SignupActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -70,7 +70,7 @@ public class SignupActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
     }

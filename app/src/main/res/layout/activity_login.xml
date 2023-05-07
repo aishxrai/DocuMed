@@ -14,10 +14,10 @@
             android:id="@+id/textInputLayoutEmail"
             android:layout_width="300sp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="200sp"
             android:gravity="center"
             android:hint="Enter Email"
             app:endIconMode="clear_text"
-            android:layout_marginTop="200sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -52,9 +52,9 @@
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
             android:text="Login"
             android:textSize="22sp"
-            android:layout_marginTop="50sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
@@ -63,9 +63,9 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
             android:text="New user? Register here"
             android:textColor="@color/md_theme_light_surfaceTint"
-            android:layout_marginTop="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
