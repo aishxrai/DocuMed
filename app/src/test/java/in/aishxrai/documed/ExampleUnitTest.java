@@ -1,4 +1,4 @@
-package com.example.documed;
+package in.aishxrai.documed;
 
 import org.junit.Test;
 

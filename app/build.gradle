@@ -3,16 +3,17 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    namespace 'in.aishxrai.documed'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.documed"
-        minSdk 21
-        targetSdk 32
+        applicationId "in.aishxrai.documed"
+        minSdk 26
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -28,20 +29,11 @@ android {
 }
 
 dependencies {
-
-
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'com.google.android.material:material:1.9.0'             // Material 3
-    implementation 'com.google.firebase:firebase-auth:22.0.0'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-// Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth:22.0.0'               // Firebase Authentication
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
-
-
 }
