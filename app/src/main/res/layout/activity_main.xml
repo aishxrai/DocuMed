@@ -8,10 +8,10 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="200sp"
-        android:layout_height="200sp"
+        android:layout_width="280dp"
+        android:layout_height="241dp"
         android:layout_marginTop="100sp"
-        android:src="@drawable/dm"
+        android:src="@drawable/reg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
