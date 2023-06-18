@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,10 +30,17 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     TextView textView;
 
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+
     private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        pref = getSharedPreferences("user", Context.MODE_PRIVATE);
+        editor = pref.edit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         tilEmail = findViewById(R.id.textInputLayoutEmail);
@@ -79,7 +88,16 @@ public class LoginActivity extends AppCompatActivity {
                                         Log.d(TAG, "signInWithEmail:success");
                                         FirebaseUser user = firebaseAuth.getCurrentUser();
                                         Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+
+                                        // storing user info in SharedPreference
+
+                                        editor.putString("user_email", user.getEmail());
+                                        editor.putString("user_id", user.getUid());
+                                        editor.putBoolean("isLoggedIn", true);
+                                        editor.commit();
+
+                                        startActivity(new Intent(LoginActivity.this, AddActivity.class));
+
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());

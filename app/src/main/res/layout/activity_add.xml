@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+
+
+        <TextView
+            android:id="@+id/HR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="43dp"
+            android:layout_marginRight="3000dp"
+            android:text="Health Records"
+            android:layout_centerHorizontal="true"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="318dp"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:layout_marginTop="120sp"-->
+<!--        android:src="@drawable/no_file"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"
+        android:layout_centerHorizontal="true"
+        android:text="No Documents Uploaded"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        style="@style/TextAppearance.Material3.BodyLarge"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="520dp"
+        android:layout_centerHorizontal="true"
+        android:text="Add all your Documents including Prescriptions, Lab Reports and Medical Bills"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="649dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/black"
+        android:layout_centerHorizontal="true"
+        android:text="+  Add Document"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HR"
+        android:id="@+id/rv"
+        android:layout_marginTop="20sp" />
+
+
+</RelativeLayout>

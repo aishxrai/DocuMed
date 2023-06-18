@@ -16,12 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     TextInputLayout tilEmail, tilPassword;
@@ -30,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView textView;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         btn_signup = findViewById(R.id.btn_signup);
         FirebaseApp.initializeApp(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -80,8 +88,30 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
-                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                         Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                                        // creating an user object to send it to Firestore
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("email", email);
+                                        user.put("password", password);
+
+                                        // Sending user object to Firestore
+                                        firestore.collection("users").document(firebaseUser.getUid()).set(user)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        Log.d(TAG, "DocumentSnapshot added");
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Log.w(TAG, "Error adding document", e);
+                                                        Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
                                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 
                                     } else {
